@@ -1,10 +1,10 @@
 # Freelexity - AI Search Assistant
 
-A modern web application that combines the power of Ollama's qwen3:1.7b (or qwen2.5:1.5b) model with real-time web search capabilities, providing an intelligent assistant that can answer questions using both its knowledge base and current web information.
+A modern web application that combines the power of Ollama's Mistral model with real-time web search capabilities, providing an intelligent assistant that can answer questions using both its knowledge base and current web information.
 
 ## Features
 
-- 🤖 **Local AI**: Uses Ollama to run the qwen2.5:1.5b model locally
+- 🤖 **Local AI**: Uses Ollama to run the Mistral model locally
 - 🔍 **Web Search**: Integrated DuckDuckGo search for real-time information
 - 💬 **Modern Chat UI**: Beautiful, responsive interface built with React and TailwindCSS
 - ⚡ **Fast**: Efficient FastAPI backend with async processing
@@ -23,20 +23,17 @@ Before you begin, ensure you have the following installed:
 
 1. Visit [https://ollama.ai/](https://ollama.ai/) and download Ollama for your platform
 2. Install Ollama
-3. Pull the qwen2.5:1.5b model:
+3. Pull the Mistral model:
    ```bash
-   ollama pull qwen2.5:1.5b
-   ```
-   
-   Or if you prefer the qwen3:1.7b model (if available):
-   ```bash
-   ollama pull qwen3:1.7b
+   ollama pull mistral
    ```
 
 4. Verify Ollama is running:
    ```bash
    ollama list
    ```
+   
+   You should see `mistral` in the list of available models.
 
 ## Installation
 
@@ -101,7 +98,7 @@ Edit `backend/main.py` to change settings:
 
 ```python
 OLLAMA_BASE_URL = "http://localhost:11434"  # Ollama API endpoint
-MODEL_NAME = "qwen2.5:1.5b"  # Model to use
+MODEL_NAME = "mistral"  # Model to use (you can change to other Ollama models)
 ```
 
 ### Frontend Configuration
@@ -175,9 +172,10 @@ freelexity/
 
 ### Model Takes Too Long to Respond
 
-- The qwen2.5:1.5b model is optimized for speed
-- If too slow, ensure your system has sufficient RAM
-- Consider using a smaller model or adjusting context size
+- Mistral is a powerful model that requires decent hardware
+- If too slow, ensure your system has sufficient RAM (8GB+ recommended)
+- Consider using a smaller model like `llama2` or `phi` for faster responses
+- You can change the model in `backend/main.py` by updating `MODEL_NAME`
 
 ## API Endpoints
 
